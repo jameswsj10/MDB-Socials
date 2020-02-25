@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4714FC1D240526A200B90E70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4714FC1C240526A200B90E70 /* GoogleService-Info.plist */; };
 		47A284272404C47E00428CAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A284262404C47E00428CAA /* AppDelegate.swift */; };
 		47A284292404C47E00428CAA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A284282404C47E00428CAA /* SceneDelegate.swift */; };
 		47A2842B2404C47E00428CAA /* AuthenticationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A2842A2404C47E00428CAA /* AuthenticationVC.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4714FC1C240526A200B90E70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		47A284232404C47E00428CAA /* mdb-socials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mdb-socials.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47A284262404C47E00428CAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47A284282404C47E00428CAA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				47A2845C2404C72700428CAA /* Storyboards */,
 				47A2842F2404C48000428CAA /* Assets.xcassets */,
 				47A2843D2404C48000428CAA /* mdb_socialsTests.swift */,
+				4714FC1C240526A200B90E70 /* GoogleService-Info.plist */,
 				47A284342404C48000428CAA /* Info.plist */,
 			);
 			path = "mdb-socials";
@@ -337,6 +340,7 @@
 				47A284652404C84000428CAA /* Feed.storyboard in Resources */,
 				47A284672404C84F00428CAA /* SocialDetail.storyboard in Resources */,
 				47A2842E2404C47E00428CAA /* Authentication.storyboard in Resources */,
+				4714FC1D240526A200B90E70 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
