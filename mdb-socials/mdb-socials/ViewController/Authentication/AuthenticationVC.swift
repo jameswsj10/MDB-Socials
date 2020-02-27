@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
 class AuthenticationVC: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-    /* func handleLogin() {
+    
+    
+    @IBAction func tabLogInButton(_ sender: Any) {
+        handleLogin()
+    }
+    
+    func handleLogin() {
         let email = emailTextField.text!
         let password = passwordTextField.text!
         
@@ -30,10 +39,18 @@ class AuthenticationVC: UIViewController {
                 return
             }
             
-            self.performSegue(withIdentifier: "toMainFeed", sender: self)
+            //self.performSegue(withIdentifier: "toMainFeed", sender: self)
         }
     }
+    
+    func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(defaultAction)
+        self.present(alert, animated: true, completion: nil)
+    }
  
+    /*
     func handleRegister() {
         guard let name = nameTextField.text else {
             return
