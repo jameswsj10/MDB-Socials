@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KYc-yS-6Sy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KYc-yS-6Sy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +21,7 @@
         <!--Sign UpVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SignUpVC" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterPg" id="BYZ-38-t0r" customClass="SignUpVC" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,7 +114,7 @@ and Privacy Policy of Socials</string>
         <!--AuthenticationVC-->
         <scene sceneID="Gj6-QB-DoR">
             <objects>
-                <viewController id="KYc-yS-6Sy" customClass="AuthenticationVC" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginPage" id="KYc-yS-6Sy" customClass="AuthenticationVC" customModule="mdb_socials" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gTB-cT-Ex9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,11 +180,22 @@ and Privacy Policy of Socials</string>
                         <outlet property="emailTextField" destination="Ild-32-byG" id="IBb-Px-vNT"/>
                         <outlet property="loginButton" destination="L6f-Y8-DfN" id="SvT-ig-ymD"/>
                         <outlet property="passwordTextField" destination="kvT-uC-gFv" id="kN2-Gc-7FM"/>
+                        <segue destination="M1u-2t-yBJ" kind="show" id="UOp-q3-OQl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1M-Dv-ngf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="836.23188405797111" y="90.401785714285708"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="c3y-zi-NzO">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="FeedPg" storyboardName="Feed" id="M1u-2t-yBJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xtA-QR-ACt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pGU-iS-HtL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300" y="-42"/>
         </scene>
     </scenes>
     <resources>

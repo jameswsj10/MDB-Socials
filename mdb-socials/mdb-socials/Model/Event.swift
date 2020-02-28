@@ -14,16 +14,16 @@ class Event {
     
     var EventCreator: String
     var picture: UIImage
-    var rsvpNum: Int
+    var rsvpEmailLst: [String]
     var date: Date
     var description: String
     var location: String
     
-    init(_ name: String, _ EventCreator: String, _ picture: UIImage, _ rsvpNum: Int, _ date: Date, _ description: String, _ location: String) {
+    init(_ name: String, _ EventCreator: String, _ picture: UIImage, _ rsvpEmailLst: [String], _ date: Date, _ description: String, _ location: String) {
         self.name = name
         self.EventCreator = EventCreator
         self.picture = picture
-        self.rsvpNum = rsvpNum
+        self.rsvpEmailLst = rsvpEmailLst
         self.date = date
         self.description = description
         self.location = location

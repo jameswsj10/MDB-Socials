@@ -44,13 +44,11 @@
 		47A284612404C7B300428CAA /* SocialDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A284602404C7B300428CAA /* SocialDetailVC.swift */; };
 		47A284632404C7C300428CAA /* NewSocialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A284622404C7C300428CAA /* NewSocialVC.swift */; };
 		47A284652404C84000428CAA /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47A284642404C84000428CAA /* Feed.storyboard */; };
-		47A284672404C84F00428CAA /* SocialDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47A284662404C84F00428CAA /* SocialDetail.storyboard */; };
 		47A284692404C85B00428CAA /* NewSocial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47A284682404C85B00428CAA /* NewSocial.storyboard */; };
 		47A2846F2404C97800428CAA /* FeedVC-TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A2846E2404C97800428CAA /* FeedVC-TableView.swift */; };
 		47A284712404C98800428CAA /* FeedVC-Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A284702404C98800428CAA /* FeedVC-Firebase.swift */; };
 		47B936432407C6600035FE16 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B936422407C6600035FE16 /* Users.swift */; };
 		47B936452407C6680035FE16 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B936442407C6680035FE16 /* Event.swift */; };
-		47B936472407C8BF0035FE16 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47B936462407C8BF0035FE16 /* SignUp.storyboard */; };
 		47B936492407C90D0035FE16 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B936482407C90D0035FE16 /* SignUpVC.swift */; };
 		D2B1826AC9E71556AFAB01E0 /* Pods_mdb_socialsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD6B2B8F346E874A72689CF /* Pods_mdb_socialsTests.framework */; };
 /* End PBXBuildFile section */
@@ -116,13 +114,11 @@
 		47A284602404C7B300428CAA /* SocialDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialDetailVC.swift; sourceTree = "<group>"; };
 		47A284622404C7C300428CAA /* NewSocialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSocialVC.swift; sourceTree = "<group>"; };
 		47A284642404C84000428CAA /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
-		47A284662404C84F00428CAA /* SocialDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SocialDetail.storyboard; sourceTree = "<group>"; };
 		47A284682404C85B00428CAA /* NewSocial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewSocial.storyboard; sourceTree = "<group>"; };
 		47A2846E2404C97800428CAA /* FeedVC-TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedVC-TableView.swift"; sourceTree = "<group>"; };
 		47A284702404C98800428CAA /* FeedVC-Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedVC-Firebase.swift"; sourceTree = "<group>"; };
 		47B936422407C6600035FE16 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		47B936442407C6680035FE16 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		47B936462407C8BF0035FE16 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		47B936482407C90D0035FE16 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		6A371EC568F426F96431BB42 /* Pods_mdb_socials_mdb_socialsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mdb_socials_mdb_socialsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		859101326A53483062D1DD1C /* Pods-mdb-socials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mdb-socials.release.xcconfig"; path = "Target Support Files/Pods-mdb-socials/Pods-mdb-socials.release.xcconfig"; sourceTree = "<group>"; };
@@ -288,9 +284,7 @@
 			children = (
 				47A284312404C48000428CAA /* LaunchScreen.storyboard */,
 				47A2842C2404C47E00428CAA /* Main.storyboard */,
-				47B936462407C8BF0035FE16 /* SignUp.storyboard */,
 				47A284642404C84000428CAA /* Feed.storyboard */,
-				47A284662404C84F00428CAA /* SocialDetail.storyboard */,
 				47A284682404C85B00428CAA /* NewSocial.storyboard */,
 			);
 			path = Storyboards;
@@ -477,10 +471,8 @@
 				2D88CE3324099DB9009F045B /* Poppins-Medium.otf in Resources */,
 				47A284652404C84000428CAA /* Feed.storyboard in Resources */,
 				2D88CE3B24099DB9009F045B /* Poppins-BlackItalic.otf in Resources */,
-				47A284672404C84F00428CAA /* SocialDetail.storyboard in Resources */,
 				47A2842E2404C47E00428CAA /* Main.storyboard in Resources */,
 				2D88CE3524099DB9009F045B /* Poppins-Italic.otf in Resources */,
-				47B936472407C8BF0035FE16 /* SignUp.storyboard in Resources */,
 				2D88CE3224099DB9009F045B /* Poppins-BoldItalic.otf in Resources */,
 				2D88CE3D24099DB9009F045B /* Poppins-ExtraBold.otf in Resources */,
 				2D88CE3824099DB9009F045B /* Poppins-LightItalic.otf in Resources */,

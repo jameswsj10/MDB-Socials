@@ -19,7 +19,7 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
         event.eventCreator.text = socials[indexPath.row].EventCreator
         event.eventImg.image = socials[indexPath.row].picture
         event.eventTitle.text = socials[indexPath.row].name
-        event.RSVPCount.text = "\(socials[indexPath.row].rsvpNum)"
+        event.RSVPCount.text = "\(socials[indexPath.row].rsvpEmailLst.count)"
         return event
     }
     
