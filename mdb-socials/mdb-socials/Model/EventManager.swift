@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class EventManager {
-    public var eventLst: [Event] = []
+    static var eventLst: [Event] = []
     
     func createNewEvent() {
         
