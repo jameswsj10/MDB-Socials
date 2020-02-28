@@ -1,5 +1,5 @@
 //
-//  Events.swift
+//  UserManager.swift
 //  mdb-socials
 //
 //  Created by James Jung on 2/27/20.
