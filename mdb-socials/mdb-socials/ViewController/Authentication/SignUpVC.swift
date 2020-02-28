@@ -79,6 +79,7 @@ class SignUpVC: UIViewController {
             let email = emailTxtField.text!
             let password = passwordTxtField.text!
             let auth = Auth.auth()
+            //let RSVP : [String]
             
             auth.createUser(withEmail: email, password: password) { (user, error) in
                 guard error == nil else {
@@ -96,7 +97,7 @@ class SignUpVC: UIViewController {
                 let newUserId = usersNode.childByAutoId().key
                 let userNode = usersNode.child(newUserId!)
                 userNode.updateChildValues(["name": name, "email": email,
-                                            "username": username])
+                                            "username": username, ])
                 
                 //self.performSegue(withIdentifier: "SignupVCtoNC", sender: self)
             }
