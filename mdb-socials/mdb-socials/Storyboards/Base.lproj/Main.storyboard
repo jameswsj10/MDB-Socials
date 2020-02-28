@@ -109,7 +109,11 @@ and Privacy Policy of Socials</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="1715.9420289855075" y="89.732142857142847"/>
+=======
+            <point key="canvasLocation" x="25" y="90"/>
+>>>>>>> fb7870462efa0d59ddb18cc19e97489144f32139
         </scene>
         <!--AuthenticationVC-->
         <scene sceneID="Gj6-QB-DoR">

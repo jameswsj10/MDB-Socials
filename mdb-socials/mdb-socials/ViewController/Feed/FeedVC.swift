@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 
 class FeedVC: UIViewController {
-
+    
+    @IBOutlet weak var eventsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    
 
 }
