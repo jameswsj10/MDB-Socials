@@ -14,14 +14,15 @@ class AuthenticationVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
     
     @IBAction func tabLogInButton(_ sender: Any) {
         handleLogin()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        loginButton.layer.cornerRadius = 3
     }
     
     func handleLogin() {
@@ -30,14 +31,12 @@ class AuthenticationVC: UIViewController {
         
         let auth = Auth.auth()
         auth.signIn(withEmail: email, password: password) {(user, error) in
-            guard error == nil else {
-                self.displayAlert(title: "Error", message: "signin error")
+            guard error == nil || user != nil else {
+                self.displayAlert(title: "Error", message: "Invalid Credentials")
                 return
             }
-            guard user != nil else {
-                self.displayAlert(title: "error", message: "user does not exist error")
-                return
-            }
+            
+            self.displayAlert(title: "Success", message: "Verification Complete")
             
             //self.performSegue(withIdentifier: "toMainFeed", sender: self)
         }
