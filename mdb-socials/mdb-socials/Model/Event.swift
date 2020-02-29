@@ -11,19 +11,20 @@ import UIKit
 
 class Event {
     var name: String
-    
+    var id: String
     var EventCreator: String
     var picture: UIImage
-    var rsvpEmailLst: [String]
+    var rsvpIDLst: [String]
     var date: Date
     var description: String
     var location: String
     
-    init(_ name: String, _ EventCreator: String, _ picture: UIImage, _ rsvpEmailLst: [String], _ date: Date, _ description: String, _ location: String) {
+    init(_ name: String, _ id: String, _ EventCreator: String, _ picture: UIImage, _ rsvpIDLst: [String], _ date: Date, _ description: String, _ location: String) {
         self.name = name
+        self.id = id
         self.EventCreator = EventCreator
         self.picture = picture
-        self.rsvpEmailLst = rsvpEmailLst
+        self.rsvpIDLst = rsvpIDLst
         self.date = date
         self.description = description
         self.location = location

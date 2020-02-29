@@ -20,7 +20,7 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource, UICollectionViewDe
         cell.eventCreator.text = event.EventCreator
         cell.eventImg.image = event.picture
         cell.eventTitle.text = event.name
-        cell.RSVPCount.text = "\(event.rsvpEmailLst.count)"
+        cell.RSVPCount.text = "\(event.rsvpIDLst.count)"
         return cell
     }
     

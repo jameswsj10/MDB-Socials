@@ -37,11 +37,10 @@ class SocialDetailVC: UIViewController {
         EventDate.text = "Date: " + formatter.string(from: currEvent.date)
         
         EventDescription.text = currEvent.description
-        InterestCount.text = "People Interested: \(currEvent.rsvpEmailLst.count)"
+        InterestCount.text = "People Interested: \(currEvent.rsvpIDLst.count)"
         
-        if currEvent.rsvpEmailLst.contains(Auth.auth().currentUser!.uid) {
+        if currEvent.rsvpIDLst.contains(Auth.auth().currentUser!.uid) {
             self.rsvpButton.setTitle("Un-RSVP", for: .disabled)
-            
         } else {
             self.rsvpButton.setTitle("RSVP Now!", for: .disabled)
         }
@@ -52,6 +51,15 @@ class SocialDetailVC: UIViewController {
     }
     
     @IBAction func rsvp_unrsvp(_ sender: Any) {
+        let EventNode = Database.database().reference().child("Events").child(currEvent.id)
+        EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
+            let currUserID = Auth.auth().currentUser!.uid
+            if !self.currEvent.rsvpIDLst.contains(currUserID) {
+                self.currEvent.rsvpIDLst.append(currUserID)
+            } else {
+                self.currEvent.rsvpIDLst = self.currEvent.rsvpIDLst.filter{$0 != currUserID}
+            }
+        })
     }
     
 
