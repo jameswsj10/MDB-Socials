@@ -22,6 +22,9 @@ class SocialDetailVC: UIViewController {
     @IBOutlet weak var EventDescription: UILabel!
     @IBOutlet weak var InterestCount: UILabel!
     @IBOutlet weak var rsvpButton: UIButton!
+    var rsvpd = false
+    let currUserID = Auth.auth().currentUser!.uid
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateEventDetails()
@@ -39,28 +42,35 @@ class SocialDetailVC: UIViewController {
         EventDescription.text = currEvent.description
         InterestCount.text = "People Interested: \(currEvent.rsvpIDLst.count)"
         
-        if currEvent.rsvpIDLst.contains(Auth.auth().currentUser!.uid) {
-            self.rsvpButton.setTitle("Un-RSVP", for: .disabled)
+        if currEvent.rsvpIDLst.contains(self.currUserID) {
+            //self.rsvpButton.setTitle("Un-RSVP", for: .disabled)
+            rsvpd = true
         } else {
-            self.rsvpButton.setTitle("RSVP Now!", for: .disabled)
+            //self.rsvpButton.setTitle("RSVP Now!", for: .disabled)
+            rsvpd = false
         }
-    }
-    
-    func retrieveData() {
-        
     }
     
     @IBAction func rsvp_unrsvp(_ sender: Any) {
         let EventNode = Database.database().reference().child("Events").child(currEvent.id)
         EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
-            let currUserID = Auth.auth().currentUser!.uid
-            if !self.currEvent.rsvpIDLst.contains(currUserID) {
-                self.currEvent.rsvpIDLst.append(currUserID)
+            if !self.currEvent.rsvpIDLst.contains(self.currUserID) {
+                self.currEvent.rsvpIDLst.append(self.currUserID)
+                self.rsvpd = true
             } else {
-                self.currEvent.rsvpIDLst = self.currEvent.rsvpIDLst.filter{$0 != currUserID}
+                self.currEvent.rsvpIDLst = self.currEvent.rsvpIDLst.filter{$0 != self.currUserID} //removes curruserID
+                self.rsvpd = false
             }
         })
     }
     
+    // not sure if this will actually change the rsvp button txt accordingly
+    override func viewWillAppear(_ animated: Bool) {
+        if (rsvpd == true) {
+            rsvpButton.setTitle("Un-RSVP", for: .normal)
+        } else {
+            rsvpButton.setTitle("RSVP Now!", for: .normal)
+        }
+    }
 
 }

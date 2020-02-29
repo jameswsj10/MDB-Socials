@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class EventManager {
     static var eventLst: [Event] = []
@@ -16,15 +18,14 @@ class EventManager {
         
     }
     
-    func editEvent() {
+    func getEvents() -> [Event] {
+        let EventNode = Database.database().reference().child("Events")
+        EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
+            let imagesNode = Storage.storage().reference().child("Images")
+            var allEvents: [Event] = []
+        })
         
-    }
-    
-    func updateRSVP() {
-        
-    }
-    
-    func getEvent() {
-        
+        self.eventLst = allEvents.sorted(by: { $0.date > $1.date })
+        return EventManager.eventLst
     }
 }

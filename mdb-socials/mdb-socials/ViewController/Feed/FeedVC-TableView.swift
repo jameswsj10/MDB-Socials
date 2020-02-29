@@ -11,12 +11,12 @@ import UIKit
 
 extension FeedVC: UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return socials.count
+        return events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
-        let event = socials[indexPath.row]
+        let event = events[indexPath.row]
         cell.eventCreator.text = event.EventCreator
         cell.eventImg.image = event.picture
         cell.eventTitle.text = event.name
@@ -24,8 +24,9 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource, UICollectionViewDe
         return cell
     }
     
-    func tableView(_ collectionView: UICollectionView, didSelectRowAt indexPath: IndexPath) {
-        self.currIndexPath = indexPath.row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.currIndexPath = indexPath
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "goToDetails", sender: self)
     }
     
