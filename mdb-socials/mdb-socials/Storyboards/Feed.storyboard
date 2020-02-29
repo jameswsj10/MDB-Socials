@@ -74,6 +74,9 @@
                                 <state key="normal" title="New Event">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="createNewEvent:" destination="PJq-hU-51b" eventType="touchUpInside" id="FVY-Om-9ii"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

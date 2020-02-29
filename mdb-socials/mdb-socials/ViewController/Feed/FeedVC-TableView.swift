@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension FeedVC: UITableViewDelegate, UITableViewDataSource {
+extension FeedVC: UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return socials.count
     }
@@ -21,6 +21,11 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
         event.eventTitle.text = socials[indexPath.row].name
         event.RSVPCount.text = "\(socials[indexPath.row].rsvpEmailLst.count)"
         return event
+    }
+    
+    func tableView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.currIndexPath = indexPath.row
+        performSegue(withIdentifier: "goToDetails", sender: self)
     }
     
     

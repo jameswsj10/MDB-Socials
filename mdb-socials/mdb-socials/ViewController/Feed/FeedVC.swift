@@ -11,6 +11,7 @@ import UIKit
 
 class FeedVC: UIViewController {
     var socials = EventManager.eventLst
+    var currIndexPath: Int = 0
     @IBOutlet weak var eventsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -18,5 +19,8 @@ class FeedVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func createNewEvent(_ sender: Any) {
+        performSegue(withIdentifier: "goToCreatePg", sender: self)
+    }
     
 }
