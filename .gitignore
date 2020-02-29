@@ -11,7 +11,7 @@ DerivedData/
 GoogleService-Info.plist
 
 ## XCUSERSTATE
-*UserInterfaceState.xcuserstate
+*.xcuserstate
 
 ## Various settings
 *.pbxuser
