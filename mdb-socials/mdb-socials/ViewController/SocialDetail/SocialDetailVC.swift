@@ -8,13 +8,51 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class SocialDetailVC: UIViewController {
 
+    var currEvent: Event!
+    @IBOutlet weak var EventImg: UIImageView!
+    @IBOutlet weak var EventName: UILabel!
+    @IBOutlet weak var EventCreator: UILabel!
+    @IBOutlet weak var EventDate: UILabel!
+    @IBOutlet weak var EventDescription: UILabel!
+    @IBOutlet weak var InterestCount: UILabel!
+    @IBOutlet weak var rsvpButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        updateEventDetails()
     }
-
+    
+    func updateEventDetails() {
+        EventImg.image = currEvent.picture
+        EventName.text = currEvent.name
+        EventCreator.text = currEvent.EventCreator
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        EventDate.text = "Date: " + formatter.string(from: currEvent.date)
+        
+        EventDescription.text = currEvent.description
+        InterestCount.text = "People Interested: \(currEvent.rsvpEmailLst.count)"
+        
+        if currEvent.rsvpEmailLst.contains(Auth.auth().currentUser!.uid) {
+            self.rsvpButton.setTitle("Un-RSVP", for: .disabled)
+            
+        } else {
+            self.rsvpButton.setTitle("RSVP Now!", for: .disabled)
+        }
+    }
+    
+    func retrieveData() {
+        
+    }
+    
+    @IBAction func rsvp_unrsvp(_ sender: Any) {
+    }
+    
 
 }

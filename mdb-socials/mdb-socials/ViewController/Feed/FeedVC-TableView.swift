@@ -15,15 +15,16 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource, UICollectionViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let event = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
-        event.eventCreator.text = socials[indexPath.row].EventCreator
-        event.eventImg.image = socials[indexPath.row].picture
-        event.eventTitle.text = socials[indexPath.row].name
-        event.RSVPCount.text = "\(socials[indexPath.row].rsvpEmailLst.count)"
-        return event
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventCell
+        let event = socials[indexPath.row]
+        cell.eventCreator.text = event.EventCreator
+        cell.eventImg.image = event.picture
+        cell.eventTitle.text = event.name
+        cell.RSVPCount.text = "\(event.rsvpEmailLst.count)"
+        return cell
     }
     
-    func tableView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ collectionView: UICollectionView, didSelectRowAt indexPath: IndexPath) {
         self.currIndexPath = indexPath.row
         performSegue(withIdentifier: "goToDetails", sender: self)
     }
