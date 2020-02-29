@@ -78,6 +78,14 @@
                                     <action selector="createNewEvent:" destination="PJq-hU-51b" eventType="touchUpInside" id="FVY-Om-9ii"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFc-tk-Tio">
+                                <rect key="frame" x="42" y="77" width="68" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="PressLogOut:" destination="PJq-hU-51b" eventType="touchUpInside" id="aQb-xy-zlh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GI7-Vn-SV4"/>

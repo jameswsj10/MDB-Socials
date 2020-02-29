@@ -24,13 +24,17 @@ class FeedVC: UIViewController {
         performSegue(withIdentifier: "goToCreatePg", sender: self)
     }
     
-    @objc func logOut() {
+    @IBAction func PressLogOut(_ sender: Any) {
+        logOut()
+    }
+    
+    func logOut() {
         do {
             try Auth.auth().signOut()
         } catch let error {
             print(error)
         }
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

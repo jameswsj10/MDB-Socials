@@ -36,7 +36,8 @@ class AuthenticationVC: UIViewController {
                 return
             }
             
-            //self.displayAlert(title: "Success", message: "Verification Complete")
+            self.emailTextField.text = ""
+            self.passwordTextField.text = ""
             self.performSegue(withIdentifier: "toFeedScreen", sender: self)
         }
     }

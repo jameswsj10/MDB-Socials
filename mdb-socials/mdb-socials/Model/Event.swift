@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Event {
+class Event { // look into equitable / codable
     var name: String
     var id: String
     var EventCreator: String
