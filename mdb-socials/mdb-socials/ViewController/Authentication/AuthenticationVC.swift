@@ -36,9 +36,8 @@ class AuthenticationVC: UIViewController {
                 return
             }
             
-            self.displayAlert(title: "Success", message: "Verification Complete")
-            
-            //self.performSegue(withIdentifier: "toMainFeed", sender: self)
+            //self.displayAlert(title: "Success", message: "Verification Complete")
+            self.performSegue(withIdentifier: "toFeedScreen", sender: self)
         }
     }
     

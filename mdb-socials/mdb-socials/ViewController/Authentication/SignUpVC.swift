@@ -91,26 +91,26 @@ class SignUpVC: UIViewController {
                     return
                 }
                 
-                
+                self.displayAlert(title: "Welcome to Socials", message: "Login using your new user account")
                 let db = Database.database().reference()
                 let usersNode = db.child("Users")
                 let newUserId = usersNode.childByAutoId().key
                 let userNode = usersNode.child(newUserId!)
                 userNode.updateChildValues(["name": name, "email": email,
                                             "username": username, ])
-                
-                //self.performSegue(withIdentifier: "SignupVCtoNC", sender: self)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         
-        override func viewWillAppear(_ animated: Bool) {
-            navigationController?.navigationBar.isHidden = true
-            RegisterButton.isUserInteractionEnabled = true
-        }
-        
-        override func viewWillDisappear(_ animated: Bool) {
-            navigationController?.navigationBar.isHidden = false
-        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+        RegisterButton.isUserInteractionEnabled = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
     
     func displayAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
