@@ -8,19 +8,43 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class FeedVC: UIViewController {
-    var socials = EventManager.eventLst
-    var currIndexPath: Int = 0
+    var events = EventManager.getEvents()
+    var currIndexPath: IndexPath!
     @IBOutlet weak var eventsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func createNewEvent(_ sender: Any) {
         performSegue(withIdentifier: "goToCreatePg", sender: self)
+    }
+    
+    @IBAction func PressLogOut(_ sender: Any) {
+        logOut()
+    }
+    
+    func logOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print(error)
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        eventsTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let details = segue.destination as? SocialDetailVC, segue.identifier == "goToDetails" {
+            details.currEvent = events[currIndexPath.row]
+        }
     }
     
 }
