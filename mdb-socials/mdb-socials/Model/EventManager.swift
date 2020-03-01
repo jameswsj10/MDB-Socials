@@ -20,9 +20,9 @@ class EventManager {
     
 //    static func getEvents() -> [Event] {
 //        let EventNode = Database.database().reference().child("Events")
+//        var allEvents: [Event] = []
 //        EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
-//            let imagesNode = Storage.storage().reference().child("Images")
-//            var allEvents: [Event] = []
+//            //let imagesNode = Storage.storage().reference().child("Images")
 //            let EventDict = snapshot.value as? [String: [String: Any]] ?? [:]
 //            for (key, val) in EventDict {
 //                print("keys and values: \(key) \(val)")
@@ -33,9 +33,7 @@ class EventManager {
 //                let currEvent = Event(val["name"] as! String, key, val["creator"] as! String, UIImage(named: "Logo")!, val["rsvpIDLst"] as! [String], eventDate!, val["description"] as! String, val["location"] as! String)
 //                allEvents.append(currEvent)
 //            }
-//            EventManager.eventLst = allEvents.sorted(by: { $0.date > $1.date })
 //        })
-//
-//        return EventManager.eventLst
+//        return allEvents.sorted(by: { $0.date > $1.date })
 //    }
 }

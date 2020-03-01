@@ -40,7 +40,7 @@ class SocialDetailVC: UIViewController {
         EventDate.text = "Date: " + formatter.string(from: currEvent.date)
         
         EventDescription.text = currEvent.description
-        InterestCount.text = "People Interested: \(currEvent.rsvpIDLst.count)"
+        //InterestCount.text = "People Interested: \(currEvent.rsvpIDLst.count)"
         
         if currEvent.rsvpIDLst.contains(self.currUserID) {
             //self.rsvpButton.setTitle("Un-RSVP", for: .disabled)
@@ -49,6 +49,7 @@ class SocialDetailVC: UIViewController {
             //self.rsvpButton.setTitle("RSVP Now!", for: .disabled)
             rsvpd = false
         }
+        updateRSVP()
     }
     
     @IBAction func rsvp_unrsvp(_ sender: Any) {
@@ -57,20 +58,31 @@ class SocialDetailVC: UIViewController {
             if !self.currEvent.rsvpIDLst.contains(self.currUserID) {
                 self.currEvent.rsvpIDLst.append(self.currUserID)
                 self.rsvpd = true
+                self.updateRSVP()
+                self.updateDB()
             } else {
                 self.currEvent.rsvpIDLst = self.currEvent.rsvpIDLst.filter{$0 != self.currUserID} //removes curruserID
                 self.rsvpd = false
+                self.updateRSVP()
+                self.updateDB()
             }
         })
     }
     
-    // not sure if this will actually change the rsvp button txt accordingly
-    override func viewWillAppear(_ animated: Bool) {
-        if (rsvpd == true) {
-            rsvpButton.setTitle("Un-RSVP", for: .normal)
-        } else {
-            rsvpButton.setTitle("RSVP Now!", for: .normal)
+    func updateRSVP() {
+        DispatchQueue.main.async {
+            self.InterestCount.text = "People Interested: \(self.currEvent.rsvpIDLst.count)"
+            if (self.rsvpd == true) {
+                self.rsvpButton.setTitle("Un-RSVP", for: .normal)
+                // change rsvp count on database so Feed page has updated rsvp value
+            } else {
+                self.rsvpButton.setTitle("RSVP Now!", for: .normal)
+            }
         }
+    }
+    
+    func updateDB() {
+        //updates Database of RSVP count for this specific event
     }
 
 }

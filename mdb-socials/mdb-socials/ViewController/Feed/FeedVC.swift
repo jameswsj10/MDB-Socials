@@ -53,8 +53,10 @@ class FeedVC: UIViewController {
                 
                 let currEvent = Event(val["name"] as! String, key, val["creator"] as! String, UIImage(named: "Logo")!, val["rsvpIDLst"] as! [String], eventDate!, val["description"] as! String, val["location"] as! String)
                 allEvents.append(currEvent)
+                self.eventsTableView.reloadData()
             }
             self.events = allEvents.sorted(by: { $0.date > $1.date })
+            self.eventsTableView.reloadData()
         })
     }
     
