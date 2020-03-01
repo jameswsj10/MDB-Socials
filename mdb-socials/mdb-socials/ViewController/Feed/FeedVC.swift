@@ -12,12 +12,14 @@ import Firebase
 import FirebaseAuth
 
 class FeedVC: UIViewController {
-    var events = EventManager.getEvents()
+    var events = EventManager.eventLst
     var currIndexPath: IndexPath!
     @IBOutlet weak var eventsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getEvents()
+        print("this is the events list: \(events)")
     }
 
     @IBAction func createNewEvent(_ sender: Any) {
@@ -35,6 +37,25 @@ class FeedVC: UIViewController {
             print(error)
         }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func getEvents() {
+        let EventNode = Database.database().reference().child("Events")
+        EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
+            //let imagesNode = Storage.storage().reference().child("Images")
+            var allEvents: [Event] = []
+            let EventDict = snapshot.value as? [String: [String: Any]] ?? [:]
+            for (key, val) in EventDict {
+                print("keys and values: \(key) \(val)")
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy/MM/dd HH:mm"
+                let eventDate = formatter.date(from: val["date"] as! String)
+                
+                let currEvent = Event(val["name"] as! String, key, val["creator"] as! String, UIImage(named: "Logo")!, val["rsvpIDLst"] as! [String], eventDate!, val["description"] as! String, val["location"] as! String)
+                allEvents.append(currEvent)
+            }
+            self.events = allEvents.sorted(by: { $0.date > $1.date })
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
