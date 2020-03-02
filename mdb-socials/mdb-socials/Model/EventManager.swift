@@ -18,8 +18,6 @@ class EventManager {
         
         //Add Image to Storage
         
-        print("Create Event is Running")
-        
         let db = Database.database().reference()
         let eventsNode = db.child("Events")
         let newEventsId = eventsNode.childByAutoId().key
@@ -27,21 +25,30 @@ class EventManager {
        
       
         let imageRef = Storage.storage().reference().child("images").child(newEventsId!)
-        var imageData = image.jpegData(compressionQuality: 0.1)
+        let imageData = image.jpegData(compressionQuality: 0.1)
         
-        print("NewSocialVC: ", imageData)
         imageRef.putData(imageData!, metadata: nil) { (metadata, err) in
         //Add to Realtime Database
+            
             let eventNode = eventsNode.child(newEventsId!)
             let usersNode = db.child("Users")
+            
+            
             usersNode.child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
            //let userInfo = snapshot.value as? [String:Any] ?? [:]
-                let rsvpArray : [String]
-                rsvpArray = []
-                let post = ["creator": creator, "date": date, "description": description,
-                            "location": location, "eventName": eventName, "rsvpIDLst": rsvpArray] as [String : Any]
+                //let rsvpArray : [String]
+                //rsvpArray = []
                 
-                eventNode.updateChildValues(post)
+                imageRef.downloadURL(completion: { (url, error) in
+                    
+                    let post = ["creator": creator, "date": date, "description": description,
+                                "location": location, "name": eventName, "image": url?.absoluteString]
+
+                    eventNode.updateChildValues(post)
+                    let rsvpNode = eventNode.child("rsvpIDLst");
+                    rsvpNode.updateChildValues(["null": "null"])
+                    
+                })
         })
     
         }
