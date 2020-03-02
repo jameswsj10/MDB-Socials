@@ -8,6 +8,10 @@
 		<string>Poppins-SemiBold.otf</string>
 		<string>Poppins-Medium.otf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>&apos;Socials&apos; would like to access your camera to match your event with an image</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>&apos;Socials&apos; would like to access your photo library to match your event with an image</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

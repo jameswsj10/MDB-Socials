@@ -28,6 +28,7 @@
 		2D88CE3B24099DB9009F045B /* Poppins-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D88CE2824099DB9009F045B /* Poppins-BlackItalic.otf */; };
 		2D88CE3C24099DB9009F045B /* Poppins-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D88CE2924099DB9009F045B /* Poppins-Regular.otf */; };
 		2D88CE3D24099DB9009F045B /* Poppins-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D88CE2A24099DB9009F045B /* Poppins-ExtraBold.otf */; };
+		2D88CE41240A2B1F009F045B /* CameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D88CE40240A2B1F009F045B /* CameraIcon.png */; };
 		4714FC1D240526A200B90E70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4714FC1C240526A200B90E70 /* GoogleService-Info.plist */; };
 		4778AE4F2408DD4A00E97E9E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4778AE4E2408DD4A00E97E9E /* UserManager.swift */; };
 		4778AE512408DD5600E97E9E /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4778AE502408DD5600E97E9E /* EventManager.swift */; };
@@ -91,6 +92,7 @@
 		2D88CE2824099DB9009F045B /* Poppins-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.otf"; sourceTree = "<group>"; };
 		2D88CE2924099DB9009F045B /* Poppins-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.otf"; sourceTree = "<group>"; };
 		2D88CE2A24099DB9009F045B /* Poppins-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.otf"; sourceTree = "<group>"; };
+		2D88CE40240A2B1F009F045B /* CameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CameraIcon.png; path = "mdb-socials/Assets.xcassets/CameraIcon.png"; sourceTree = SOURCE_ROOT; };
 		4714FC1C240526A200B90E70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4778AE4E2408DD4A00E97E9E /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		4778AE502408DD5600E97E9E /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				47A284262404C47E00428CAA /* AppDelegate.swift */,
+				2D88CE40240A2B1F009F045B /* CameraIcon.png */,
 				47A284282404C47E00428CAA /* SceneDelegate.swift */,
 				2D88CE1724099DB8009F045B /* poppins */,
 			);
@@ -473,6 +476,7 @@
 				2D88CE3224099DB9009F045B /* Poppins-BoldItalic.otf in Resources */,
 				2D88CE3D24099DB9009F045B /* Poppins-ExtraBold.otf in Resources */,
 				2D88CE3824099DB9009F045B /* Poppins-LightItalic.otf in Resources */,
+				2D88CE41240A2B1F009F045B /* CameraIcon.png in Resources */,
 				2D88CE2F24099DB9009F045B /* Poppins-ThinItalic.otf in Resources */,
 				4714FC1D240526A200B90E70 /* GoogleService-Info.plist in Resources */,
 				2D88CE3924099DB9009F045B /* Poppins-Bold.otf in Resources */,
@@ -793,6 +797,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 64DMVRQR3T;
 				INFOPLIST_FILE = "mdb-socials/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -811,6 +816,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 64DMVRQR3T;
 				INFOPLIST_FILE = "mdb-socials/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -70,34 +70,22 @@ class AuthenticationVC: UIViewController {
                 self.displayAlert(title: "Error", message: "Create User yoasted")
                 return
             }
-            guard user != nil else {
-                self.displayAlert(title: "Error", message: "No User")
-                return
+            for (userId, _) in usersDict {
+                guard let userInfoDict = usersDict[userId] else {
+                    print("friends error 2")
+                    continue
+                }
+                
+                if userInfoDict["email"]! == email {
+                    let theUsersName = userInfoDict["name"]
+                    UserDefaults.standard.set(theUsersName, forKey: "name")
+                }
+                
             }
+        })
+        
             
-            // now adding in user to the database
-            let db = Database.database().reference()
-            let usersNode = db.child("Users")
-            guard let newUserId = usersNode.childByAutoId().key else {
-                print("problem creating new usersNode child")
-                return
-            }// creates a unique id that is not already stored in the db - created a node
-            let userNode = usersNode.child(newUserId) // now we traverse into it
-            /* set value vs. updatechildvalue:
-             *  setvalue deletes everything and sets a new value
-             *  update value updates specific fields
-             */
-            userNode.updateChildValues(["email": email, "name": name, "phoneNumber": number])
-            self.performSegue(withIdentifier: "toMainFeed", sender: self) // make sure to have the segue
-        }
-    }
-
-    func handleLoginOrRegister() {
-    //loginRegisterButton.isUserInteractionEnabled = false
-        if loginRegisterSegControl.selectedSegmentIndex == 0 {
-            handleLogin()
-        } else {
-            handleRegister()
+        self.performSegue(withIdentifier: "toFeedScreen", sender: self)
         }
     }
     
@@ -107,26 +95,6 @@ class AuthenticationVC: UIViewController {
         alert.addAction(defaultAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
-    @IBAction func handleLoginRegisterChange(_ sender: Any) {
-        handleLoginRegisterChange()
-    }
-    
-    func handleLoginRegisterChange() {
-        let index = loginRegisterSegControl.selectedSegmentIndex
-        let title = loginRegisterSegControl.titleForSegment(at: index)
-        loginRegisterButton.setTitle(title, for: UIControl.State())
-        
-        if title == "Login" {
-            nameTextField.isHidden = true
-            phoneNumberTextField.isHidden = true
-        } else {
-            nameTextField.isHidden = false
-            phoneNumberTextField.isHidden = false
-        }
-    }
- 
- */
 
 }
 
