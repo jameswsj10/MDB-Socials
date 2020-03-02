@@ -11,7 +11,7 @@ DerivedData/
 GoogleService-Info.plist
 
 ## XCUSERSTATE
-mdb-socials/mdb-socials.xcworkspace/xcuserdata/jungwonsuk.xcuserdatad UserInterfaceState.xcuserstate
+*.xcuserstate
 
 ## Various settings
 *.pbxuser
