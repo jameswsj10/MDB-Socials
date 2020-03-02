@@ -9,28 +9,19 @@
 import Foundation
 import UIKit
 
-class NewSocialVC: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate{
-
+class NewSocialVC: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    var event: EventManager!
+    var eventImage: UIImage!
     @IBOutlet weak var newEventField: UITextField!
     @IBOutlet weak var eventTimeField: UITextField!
     @IBOutlet weak var eventLocationField: UITextField!
     @IBOutlet weak var eventDescriptionField: UITextView!
     
-    @IBOutlet var imageView: UIImageView!
-    var imagePicker = UIImagePickerController()
+    @IBOutlet weak var imageButton: UIButton!
     
     @IBAction func cameraButton(_ sender: Any) {
-        
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            print("Button capture")
-
-            imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-            imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = false
-
-            present(imagePicker, animated: true, completion: nil)
-        }
-        
+       showAlert()
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -38,12 +29,36 @@ class NewSocialVC: UIViewController, UITextViewDelegate, UIImagePickerController
     }
     
     @IBAction func createEventButton(_ sender: Any) {
+        event = EventManager()
+        let eventName = newEventField.text
+        let eventTime = eventTimeField.text
+        let eventLocation = eventLocationField.text
+        let eventDescription = eventDescriptionField.text
+
+        
+        guard eventName! != "" && eventTime! != "" && eventLocation! != "" &&
+            eventDescription! != "" && eventImage != nil else {
+            print("Cannot create event")
+            return
+        }
+        
+        print("Event can be created")
+        print(UserDefaults.standard.string(forKey: "name")!)
+        print(eventTime!)
+        print(eventDescription!)
+        print(eventImage!)
+        print(eventLocation!)
+        print(eventName!)
+
+        event.createNewEvent(creator: UserDefaults.standard.string(forKey: "name")!, date: eventTime!, description: eventDescription!, image: eventImage!, location: eventLocation!, eventName: eventName!)
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        print("This is the userDefault for name " + UserDefaults.standard.string(forKey: "name")!)
         eventDescriptionField.textColor = .black
         eventDescriptionField.text = "Provide a description of the event"
         eventDescriptionField.layer.borderWidth = 1
@@ -75,13 +90,48 @@ class NewSocialVC: UIViewController, UITextViewDelegate, UIImagePickerController
         
     }
     
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
-        self.dismiss(animated: true, completion: { () -> Void in
+    
+    func showAlert() {
 
-        })
-        print("Changing Image")
-        imageView.image = image
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action: UIAlertAction) in
+            self.getImage(fromSourceType: .camera)
+        }))
+        alert.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: {(action: UIAlertAction) in
+            self.getImage(fromSourceType: .photoLibrary)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
+    //get image from source type
+    func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
 
+        //Check is source type available
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = sourceType
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var newImage: UIImage
+        
+        
+        if let possibleImage = info[.editedImage] as? UIImage {
+            newImage = possibleImage
+        } else if let possibleImage = info[.originalImage] as? UIImage {
+            newImage = possibleImage
+        } else {
+            return
+        }
+
+        // set the image on the screen and dismiss the imagePicker
+        imageButton.setImage(newImage, for: .normal)
+        eventImage = newImage
+        dismiss(animated: true)
+    }
 }

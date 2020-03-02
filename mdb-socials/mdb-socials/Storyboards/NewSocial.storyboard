@@ -79,8 +79,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload an Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yET-Cd-O1K">
-                                <rect key="frame" x="194" y="567" width="148" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload an Image!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yET-Cd-O1K">
+                                <rect key="frame" x="281" y="592" width="126" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -95,7 +95,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuI-tN-nvT">
-                                <rect key="frame" x="29" y="529" width="100" height="100"/>
+                                <rect key="frame" x="20" y="527" width="253" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="CameraIcon.png"/>
                                 <connections>
@@ -126,10 +126,6 @@
                                     <action selector="cancelButton:" destination="0N4-M2-iUR" eventType="touchUpInside" id="GfG-Kd-KE5"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tray" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lFq-St-kF9">
-                                <rect key="frame" x="87" y="637" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="bON-uQ-yfg"/>
@@ -138,7 +134,7 @@
                         <outlet property="eventDescriptionField" destination="Zr7-na-4og" id="5EB-pp-iWI"/>
                         <outlet property="eventLocationField" destination="DTJ-NH-WOB" id="P6o-LZ-rH4"/>
                         <outlet property="eventTimeField" destination="rrk-K7-ZdA" id="iF8-T0-TeP"/>
-                        <outlet property="imageView" destination="lFq-St-kF9" id="nqW-Wb-KzF"/>
+                        <outlet property="imageButton" destination="nuI-tN-nvT" id="hZB-CO-AHM"/>
                         <outlet property="newEventField" destination="Myf-tk-qbb" id="6I6-n6-cyc"/>
                     </connections>
                 </viewController>
@@ -149,6 +145,5 @@
     </scenes>
     <resources>
         <image name="CameraIcon.png" width="1024" height="1024"/>
-        <image name="tray" catalog="system" width="64" height="44"/>
     </resources>
 </document>
