@@ -31,47 +31,6 @@ class SignUpVC: UIViewController {
         // Do any additional setup after loading the view.
         RegisterButton.layer.cornerRadius = 3
     }
-    //    func handleRegister() {
-    //        guard let name = nameTxtField.text else {
-    //            return
-    //        }
-    //        guard let username = usernameTxtField.text else {
-    //            return
-    //        }
-    //        guard let email = emailTxtField.text else {
-    //            return
-    //        }
-    //        guard let password = passwordTxtField.text else {
-    //            return
-    //        }
-    //        // create user
-    //        let auth = Auth.auth()
-    //        auth.createUser(withEmail: email, password: password) { (user, error) in
-    //            guard error == nil else {
-    //                self.displayAlert(title: "Error", message: error.debugDescription)
-    //                return
-    //            }
-    //            guard user != nil else {
-    //                self.displayAlert(title: "Error", message: "No User")
-    //                return
-    //            }
-    //
-    //            // now adding in user to the database
-    //            let db = Database.database().reference()
-    //            let usersNode = db.child("Users")
-    //            guard let newUserId = usersNode.childByAutoId().key else {
-    //                print("problem creating new usersNode child")
-    //                return
-    //            }// creates a unique id that is not already stored in the db - created a node
-    //            let userNode = usersNode.child(newUserId) // now we traverse into it
-    //            /* set value vs. updatechildvalue:
-    //             *  setvalue deletes everything and sets a new value
-    //             *  update value updates specific fields
-    //             */
-    //            userNode.updateChildValues(["email": email, "name": name, "username": username])
-    //            //self.performSegue(withIdentifier: "toMainFeed", sender: self) // make sure to have the segue
-    //        }
-    //    }
         
         func handleRegister() {
             let name = nameTxtField.text!

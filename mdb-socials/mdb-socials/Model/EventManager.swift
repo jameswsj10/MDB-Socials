@@ -10,30 +10,54 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseStorage
 
 class EventManager {
     static var eventLst: [Event] = []
     
-    func createNewEvent() {
+    func createNewEvent(creator: String, date: String, description: String, image: UIImage, location: String, eventName: String) {
         
+        //Add Image to Storage
+        
+        let db = Database.database().reference()
+        let eventsNode = db.child("Events")
+        let newEventsId = eventsNode.childByAutoId().key
+        let user = Auth.auth().currentUser
+       
+      
+        let imageRef = Storage.storage().reference().child("images").child(newEventsId!)
+        let imageData = image.jpegData(compressionQuality: 0.1)
+        
+        imageRef.putData(imageData!, metadata: nil) { (metadata, err) in
+        //Add to Realtime Database
+            
+            let eventNode = eventsNode.child(newEventsId!)
+            let usersNode = db.child("Users")
+            
+            
+            usersNode.child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+           //let userInfo = snapshot.value as? [String:Any] ?? [:]
+                //let rsvpArray : [String]
+                //rsvpArray = []
+                
+                imageRef.downloadURL(completion: { (url, error) in
+                    
+                    let post = ["creator": creator, "date": date, "description": description,
+                                "location": location, "name": eventName, "image": url?.absoluteString]
+
+                    eventNode.updateChildValues(post)
+                    let rsvpNode = eventNode.child("rsvpIDLst");
+                    rsvpNode.updateChildValues(["null": "null"])
+                    
+                })
+        })
+    
+        }
+    
+        return
     }
     
-//    static func getEvents() -> [Event] {
-//        let EventNode = Database.database().reference().child("Events")
-//        var allEvents: [Event] = []
-//        EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
-//            //let imagesNode = Storage.storage().reference().child("Images")
-//            let EventDict = snapshot.value as? [String: [String: Any]] ?? [:]
-//            for (key, val) in EventDict {
-//                print("keys and values: \(key) \(val)")
-//                let formatter = DateFormatter()
-//                formatter.dateFormat = "yyyy/MM/dd HH:mm"
-//                let eventDate = formatter.date(from: val["date"] as! String)
-//
-//                let currEvent = Event(val["name"] as! String, key, val["creator"] as! String, UIImage(named: "Logo")!, val["rsvpIDLst"] as! [String], eventDate!, val["description"] as! String, val["location"] as! String)
-//                allEvents.append(currEvent)
-//            }
-//        })
-//        return allEvents.sorted(by: { $0.date > $1.date })
-//    }
+    func getEvent() {
+        
+    }
 }
