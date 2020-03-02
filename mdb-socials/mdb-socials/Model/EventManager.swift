@@ -37,17 +37,16 @@ class EventManager {
             
             usersNode.child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
            //let userInfo = snapshot.value as? [String:Any] ?? [:]
-                //let rsvpArray : [String]
-                //rsvpArray = []
+                let rsvpArray : [String] = []
                 
                 imageRef.downloadURL(completion: { (url, error) in
                     
                     let post = ["creator": creator, "date": date, "description": description,
-                                "location": location, "name": eventName, "image": url?.absoluteString]
+                                "location": location, "name": eventName, "image": url?.absoluteString, "rsvpIDLst": rsvpArray] as [String : Any]
 
                     eventNode.updateChildValues(post)
-                    let rsvpNode = eventNode.child("rsvpIDLst");
-                    rsvpNode.updateChildValues(["null": "null"])
+//                    let rsvpNode = eventNode.child("rsvpIDLst");
+//                    rsvpNode.updateChildValues([])
                     
                 })
         })

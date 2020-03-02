@@ -42,7 +42,7 @@ class FeedVC: UIViewController {
     func getEvents() {
         let EventNode = Database.database().reference().child("Events")
         EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
-            //let imagesNode = Storage.storage().reference().child("Images")
+            let imagesNode = Storage.storage().reference().child("Images")
             var allEvents: [Event] = []
             let EventDict = snapshot.value as? [String: [String: Any]] ?? [:]
             for (key, val) in EventDict {
@@ -51,7 +51,20 @@ class FeedVC: UIViewController {
                 formatter.dateFormat = "yyyy/MM/dd HH:mm"
                 let eventDate = formatter.date(from: val["date"] as! String)
                 
-                let currEvent = Event(val["name"] as! String, key, val["creator"] as! String, UIImage(named: "Logo")!, val["rsvpIDLst"] as! [String], eventDate!, val["description"] as! String, val["location"] as! String)
+                var img: UIImage?
+                let currEventImage = imagesNode.child(key)
+                currEventImage.getData(maxSize: 100 * 1024 * 1024) { (data, error) in
+                    guard error == nil else {
+                        return
+                    }
+                    guard data != nil else {
+                        return
+                    }
+                    img = UIImage(data: data!)!
+                }
+                
+                let currEvent = Event(val["name"] as! String, key, val["creator"] as! String, img ?? UIImage(named: "Logo")!, val["rsvpIDLst"] as! [String], eventDate!, val["description"] as! String, val["location"] as! String)
+                
                 allEvents.append(currEvent)
                 self.eventsTableView.reloadData()
             }

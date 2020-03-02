@@ -210,9 +210,9 @@
 			isa = PBXGroup;
 			children = (
 				47A2845B2404C70200428CAA /* Resources */,
+				47A284582404C6DC00428CAA /* Model */,
 				47A284592404C6E400428CAA /* View */,
 				47A2845A2404C6E900428CAA /* ViewController */,
-				47A284582404C6DC00428CAA /* Model */,
 				47A2845C2404C72700428CAA /* Storyboards */,
 				47A2842F2404C48000428CAA /* Assets.xcassets */,
 				4714FC1C240526A200B90E70 /* GoogleService-Info.plist */,
