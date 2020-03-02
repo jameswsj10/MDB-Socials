@@ -38,17 +38,9 @@ class NewSocialVC: UIViewController, UITextViewDelegate, UIImagePickerController
         
         guard eventName! != "" && eventTime! != "" && eventLocation! != "" &&
             eventDescription! != "" && eventImage != nil else {
-            print("Cannot create event")
+            displayErrorCreatingEvent(title: "Error Creating Event", message: "Please fill in all fields")
             return
         }
-        
-        print("Event can be created")
-        print(UserDefaults.standard.string(forKey: "name")!)
-        print(eventTime!)
-        print(eventDescription!)
-        print(eventImage!)
-        print(eventLocation!)
-        print(eventName!)
 
         event.createNewEvent(creator: UserDefaults.standard.string(forKey: "name")!, date: eventTime!, description: eventDescription!, image: eventImage!, location: eventLocation!, eventName: eventName!)
         self.dismiss(animated: true, completion: nil)
@@ -58,7 +50,6 @@ class NewSocialVC: UIViewController, UITextViewDelegate, UIImagePickerController
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("This is the userDefault for name " + UserDefaults.standard.string(forKey: "name")!)
         eventDescriptionField.textColor = .black
         eventDescriptionField.text = "Provide a description of the event"
         eventDescriptionField.layer.borderWidth = 1
@@ -70,7 +61,6 @@ class NewSocialVC: UIViewController, UITextViewDelegate, UIImagePickerController
     
     //Following two functions are to give placeholder functinality and do not work
     func textViewDidBeginEditing(_ textView: UITextView) {
-        print("1 textViewDidBeginEditing did run")
         if (eventDescriptionField.text == "Provide a description of the event"
             && eventDescriptionField.textColor == .lightGray) {
             eventDescriptionField.text = ""
@@ -80,7 +70,6 @@ class NewSocialVC: UIViewController, UITextViewDelegate, UIImagePickerController
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
-        print("2 textViewDidEndEditing did run")
         if (eventDescriptionField.text == "")
         {
             eventDescriptionField.text = "Provide a description of the event"
@@ -134,4 +123,12 @@ class NewSocialVC: UIViewController, UITextViewDelegate, UIImagePickerController
         eventImage = newImage
         dismiss(animated: true)
     }
+    
+    func displayErrorCreatingEvent(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(defaultAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
