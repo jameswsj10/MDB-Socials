@@ -15,6 +15,7 @@ class FeedVC: UIViewController {
     var events = EventManager.eventLst
     var currIndexPath: IndexPath!
     @IBOutlet weak var eventsTableView: UITableView!
+    var EventImage: UIImage = UIImage(named: "Logo")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,16 +43,34 @@ class FeedVC: UIViewController {
     func getEvents() {
         let EventNode = Database.database().reference().child("Events")
         EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
-            //let imagesNode = Storage.storage().reference().child("Images")
+            let imagesNode = Storage.storage().reference().child("images")
             var allEvents: [Event] = []
             let EventDict = snapshot.value as? [String: [String: Any]] ?? [:]
             for (key, val) in EventDict {
-                print("keys and values: \(key) \(val)")
+                print("key and value: \(key) \(val)")
+                
                 let formatter = DateFormatter()
                 formatter.dateFormat = "yyyy/MM/dd HH:mm"
                 let eventDate = formatter.date(from: val["date"] as! String)
                 
-                let currEvent = Event(val["name"] as! String, key, val["creator"] as! String, UIImage(named: "Logo")!, val["rsvpIDLst"] as! [String], eventDate!, val["description"] as! String, val["location"] as! String)
+                let currEvent = Event(val["name"] as! String, key, val["creator"] as! String, self.EventImage, val["rsvpIDLst"] as! [String], eventDate!, val["description"] as! String, val["location"] as! String)
+                
+                //var Eventimg: UIImage
+                let currEventImage = imagesNode.child(key)
+                currEventImage.getData(maxSize: 100 * 1024 * 1024) { (data, error) in
+                    guard error == nil else {
+                        print("error in retrieving image from error: \(error.debugDescription)")
+                        return
+                    }
+                    guard data != nil else {
+                        print("error in retrieving image from data: \(data.debugDescription)")
+                        return
+                    }
+                    currEvent.picture = UIImage(data: data!)!
+                    print("successfully updated \(currEvent.name)'s img")
+                    self.eventsTableView.reloadData()
+                }
+                
                 allEvents.append(currEvent)
                 self.eventsTableView.reloadData()
             }
