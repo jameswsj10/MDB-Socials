@@ -56,8 +56,4 @@ class EventManager {
     
         return
     }
-    
-    func getEvent() {
-        
-    }
 }

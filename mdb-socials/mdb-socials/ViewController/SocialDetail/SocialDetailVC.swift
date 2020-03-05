@@ -33,11 +33,11 @@ class SocialDetailVC: UIViewController {
     func updateEventDetails() {
         EventImg.image = currEvent.picture
         EventName.text = currEvent.name
-        EventCreator.text = currEvent.EventCreator
+        EventCreator.text = "Event By \(currEvent.EventCreator)"
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        EventDate.text = "Date: " + formatter.string(from: currEvent.date)
+        EventDate.text = formatter.string(from: currEvent.date)
         
         EventDescription.text = currEvent.description
         //InterestCount.text = "People Interested: \(currEvent.rsvpIDLst.count)"
@@ -83,6 +83,10 @@ class SocialDetailVC: UIViewController {
     
     func updateDB() {
         //updates Database of RSVP count for this specific event
+//        let EventNode = Database.database().reference().child("Events")
+//        EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//        })
     }
 
 }
