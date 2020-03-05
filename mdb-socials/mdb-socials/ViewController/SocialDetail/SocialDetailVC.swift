@@ -83,10 +83,6 @@ class SocialDetailVC: UIViewController {
     
     func updateDB() {
         //updates Database of RSVP count for this specific event
-//        let EventNode = Database.database().reference().child("Events")
-//        EventNode.observeSingleEvent(of: .value, with: { (snapshot) in
-//
-//        })
     }
 
 }
