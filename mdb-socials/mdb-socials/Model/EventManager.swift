@@ -47,7 +47,7 @@ class EventManager {
 
                     eventNode.updateChildValues(post)
                     let rsvpNode = eventNode.child("rsvpIDLst");
-                    rsvpNode.updateChildValues(["null": "null"])
+                    rsvpNode.updateChildValues(["0": "null"])
                     
                 })
         })
