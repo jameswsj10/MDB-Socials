@@ -1,4 +1,4 @@
-# MDB-Socials
+# RSVP-App
 
 ## Contributers: Geo and James
 
